@@ -857,3 +857,4 @@ TSWLatexianTemp*
 
 out/*
 *.pdf
+.env
