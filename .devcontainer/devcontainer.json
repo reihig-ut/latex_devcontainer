@@ -2,7 +2,9 @@
   "name": "latex-in-docker-on-vscode",
   "dockerComposeFile": "docker-compose.yml",
   "extensions": [
-    "James-Yu.latex-workshop"
+    "James-Yu.latex-workshop",
+    "github.copilot",
+    "github.copilot-labs"
   ],
   "service": "texlive-ja",
   "settings": {
@@ -13,17 +15,24 @@
     "latex-workshop.latex.recipes": [
       {
         "name": "latexmk 🔃",
-        "tools": ["latexmk"]
+        "tools": [
+          "latexmk"
+        ]
       }
     ],
     "latex-workshop.latex.tools": [
       {
         "name": "latexmk",
         "command": "latexmk",
-        "args": ["-silent", "%DOC%"],
+        "args": [
+          "-silent",
+          "-outdir=%OUTDIR%",
+          "%DOC%"
+        ],
         "env": {}
       }
     ],
+    "latex-workshop.latex.outDir": "out",
     // formatter
     "[latex]": {
       "editor.formatOnSave": true,
@@ -42,6 +51,12 @@
     "latex-workshop.message.update.show": false,
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab"
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true
   },
   "workspaceFolder": "/workdir",
   "shutdownAction": "stopCompose"
